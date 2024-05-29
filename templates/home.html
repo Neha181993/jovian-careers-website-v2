@@ -10,25 +10,34 @@
         height: 360px;
         width: 100%;
         object-fit: auto;
+        margin-bottom: 16px;
       }      
     </style>
-  </head>
-<div class=container>
+   </head>
     <body>
-      <h1 class="text-center">{{company_name}}</h1>
+      {% include 'nav.html' %}
       <img id=banner class="img-fluid" src="https://23443a3d-42d9-4667-a992-d0d840f9a663-00-3jqyxzgiirjlf.sisko.replit.dev/static/banner.jpg" height="320">
-      <h2 class="text-center"> About Jovian</h2>
-      <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore</p>
-      <h2 class="text-center">Job Positions</h2>
-      <p>
-        {% for job in jobs%}
-          {% include 'jobitem.html' %}
-        {% endfor %}
-      </p>
-      <div class="text-center">
-      <button class="btn btn-primary btn-lg">Contact Us</button>
-      <p class="mt-4">Copyright 2023, Jovian</p>
+      <div class=container>
+        <h1 class="text-center">{{company_name}}</h1>
+        <div class=row style="margin-bottom:16px">
+          <div class="col-md-6">
+            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore shvkj kjdvrjkj dknvkjndvkj kndvjrnkjv kuibvsrujbiu ikubvrubiu kbskvub
+            vsbibdvujbsiu kibvsjubsiuvc oladubcv jvyvuv iubbi bubui bubub olidnvivl oviorbv kbivfsduiv</p>
+          </div>
+          <div class="d-none d-md-block col-6">
+            <img src="https://23443a3d-42d9-4667-a992-d0d840f9a663-00-3jqyxzgiirjlf.sisko.replit.dev/static/people.jpg" style="height:250px;border-rdius:4px;">
+          </div>  
+          <div>
+        <h2 class="text-center" style="margin-top:16px">Open Positions</h2>
+        <p>
+          {% for job in jobs%}
+            {% include 'jobitem.html' %}
+          {% endfor %}
+        </p>
+        <div class="text-center">
+        <button class="btn btn-primary btn-lg">Contact Us</button>
+        </div>
       </div>
-    </body>
-</div>
+       {% include 'footer.html' %}
+  </body> 
 </html>
