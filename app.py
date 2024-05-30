@@ -1,5 +1,6 @@
 from re import template
 from flask import Flask, render_template, jsonify
+from database import load_job_from_db
 
 app = Flask(__name__)
 
@@ -35,6 +36,7 @@ def load_jobs_from_db():
         return jobs
 
 
+
 @app.route("/")
 def hello():
     JOBS1= load_jobs_from_db()## This needs to be added below as of now it is not working coz we don't have db
@@ -45,7 +47,24 @@ def hello():
 
 @app.route("/api/jobs")
 def list_jobs():
+    JOBS1= load_jobs_from_db()## This needs to be added below as of now it is not working coz we don't have db
     return jsonify(JOBS)
+
+## To print specific ID 
+@app.route("/api/jobs/<id>")
+def show_job():
+    JOBS=load_job_from_db(id)
+    ## This needs to be added below as of now it is not working coz we don't have db
+    return jsonify(JOBS)
+
+
+@app.route("/api/jobs/<id>")
+def show_job_temlpate():
+    JOBS=load_job_from_db(id)
+    ##This needs to be added below as of now it is not working coz we don't have db
+    if not JOBS:
+        return "Not Found", 404
+    return render_template('jobpage.html',job=JOBS)
 
 
 if __name__ == "__main__":

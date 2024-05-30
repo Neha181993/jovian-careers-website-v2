@@ -1,0 +1,22 @@
+<!DOCTYP html>
+<html>
+  <head>
+    <title>{{job.title}}</title>
+     {% inclued 'bootstrap.html' %}
+  </head>
+  <body>
+    {% include 'nav.html' %}
+    {% include banner.html %}
+    
+    <div class=container>
+      <h1 class="text-center">Jovian Careers</h1>   
+      <h3>Title</h3>
+      <p>{{job.title}}</p>
+      <h3>Location</h3>
+      <p>{{job.location}}</p>  
+    </div>
+    
+    {% include 'footer.html' %}
+    
+  </body>
+</html>
