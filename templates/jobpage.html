@@ -13,7 +13,21 @@
       <h3>Title</h3>
       <p>{{job.title}}</p>
       <h3>Location</h3>
-      <p>{{job.location}}</p>  
+      <p>{{job.location}}</p> 
+      <h3>Responsibilities</h3>
+      <!-- bullets -->
+      <ul>
+        {% for line in job.responsibilities.split("\n") %}
+        <li {{line}} </li>
+        {% endfor %}
+      </ul>
+      <h3>Requirements</h3>
+      <!-- numbered -->
+      <ol>
+        {% for line in job.Requirements.split("\n") %}
+        <li {{line}} </li>
+        {% endfor %}
+      </ol>      
     </div>
     
     {% include 'footer.html' %}
