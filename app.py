@@ -26,8 +26,18 @@ JOBS = [{
 }]
 
 
+def load_jobs_from_db():
+    with engine.connect() as conn:
+        result = conn.execute("SELECT * FROM jobs")
+        jobs = []
+        for row in result:
+            jobs.append(row)
+        return jobs
+
+
 @app.route("/")
 def hello():
+    JOBS1= load_jobs_from_db()## This needs to be added below as of now it is not working coz we don't have db
     return render_template('home.html',
                            jobs=JOBS,
                            company_name="Jovian Careers")
