@@ -1,6 +1,6 @@
 from re import template
-from flask import Flask, render_template, jsonify
-from database import load_job_from_db
+from flask import Flask, render_template, jsonify , request
+from database import load_job_from_db, add_application_to_db
 
 app = Flask(__name__)
 
@@ -66,6 +66,18 @@ def show_job_temlpate():
         return "Not Found", 404
     return render_template('jobpage.html',job=JOBS)
 
+
+@app.route("/jobs/<id>/apply", method=['post'])
+def apply_to_job(id):
+    #data = request.args ## data sent to URL
+    #Store  this in DB
+    #Send an email
+    #Display an ack
+    JOBS=load_job_from_db(id)
+    data=request.form ## Post method
+    add_application_to_db(id, data)
+    #return jsonify(data)
+    return render_template('application_submit_form.html',application=data , job=JOBS)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
